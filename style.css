@@ -1,0 +1,185 @@
+/* Ethiopian Telecom Customer Service System - stylesheet */
+:root{
+  --bg:#f7f8f5;
+  --card:#fff;
+  --text:#1d2a22;
+  --muted:#5b6b61;
+  --line:#dde3dc;
+  --g:#078930;
+  --y:#c99a00;
+  --r:#da121a;
+  --code:#0f1a14;
+  --codetx:#d8f0de}
+
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+  --bg:#0f1512;
+  --card:#17201b;
+  --text:#e6efe9;
+  --muted:#9bada2;
+  --line:#27352d;
+  --g:#3fbf68;
+  --y:#e6b800;
+  --r:#ff6b6b;
+  --code:#0a0f0c;
+  --codetx:#d8f0de}
+}
+
+*{
+  box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif;
+  background-color:var(--bg)}
+
+.flag{
+  height:6px;
+  background:linear-gradient(90deg,var(--g) 33%,var(--y) 33% 66%,var(--r) 66%)}
+
+header,main{
+  max-width:900px;
+  margin:0 auto;
+  padding:0 20px}
+
+header{
+  padding-top:40px}
+
+h1{
+  font-size:clamp(1.6rem,4vw,2.3rem);
+  margin:0 0 8px;
+  line-height:1.2}
+
+.sub{
+  color:var(--muted);
+  margin:0 0 20px}
+
+.btns{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:8px}
+
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:8px;
+  background:var(--g);
+  color:#fff;
+  text-decoration:none;
+  font-weight:600}
+
+.btn.alt{
+  background:transparent;
+  color:var(--text);
+  border:1px solid var(--line)}
+
+h2{
+  margin:40px 0 12px;
+  font-size:1.3rem;
+  border-left:4px solid var(--g);
+  padding-left:10px}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:18px}
+
+.tree{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:8px}
+
+.node{
+  padding:8px 14px;
+  border-radius:999px;
+  background:var(--card);
+  border:1px solid var(--g);
+  font-weight:600}
+
+.arrow{
+  color:var(--muted)}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:14px}
+
+.grid .card h3{
+  margin:0 0 6px;
+  font-size:1rem;
+  color:var(--g)}
+
+.grid .card ul{
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+  font-size:.93rem}
+
+.scroll{
+  overflow-x:auto}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  font-size:.92rem}
+
+th,td{
+  text-align:left;
+  padding:9px 12px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top}
+
+th{
+  color:var(--muted);
+  font-weight:600}
+
+code{
+  font-family:ui-monospace,Consolas,monospace;
+  font-size:.88em}
+
+pre{
+  background:var(--code);
+  color:var(--codetx);
+  padding:16px;
+  border-radius:10px;
+  overflow-x:auto;
+  margin:0;
+  font-size:.85rem;
+  line-height:1.5}
+
+footer{
+  max-width:900px;
+  margin:40px auto 30px;
+  padding:0 20px;
+  color:var(--muted);
+  font-size:.85rem}
+
+
+/* ---------- Interactive app (script.js) ---------- */
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:14px}
+label{display:flex;flex-direction:column;gap:4px;font-size:.85rem;color:var(--muted);font-weight:600}
+input{padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--text);font:inherit}
+input:focus{outline:2px solid var(--g);outline-offset:1px}
+button.btn{border:0;cursor:pointer;font:inherit;font-weight:600}
+button.btn.alt{border:1px solid var(--line)}
+.msg{margin:10px 0 0;min-height:1.4em;font-size:.9rem}
+.msg.ok{color:var(--g)}
+.msg.bad{color:var(--r)}
+.muted{color:var(--muted);font-size:.85rem;margin:4px 0 0}
+#report h3{margin:22px 0 10px;font-size:1.05rem}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--bg)}
+.stat span{display:block;font-size:.78rem;color:var(--muted)}
+.stat strong{font-size:1.15rem}
+details.lvl{border-left:3px solid var(--line);margin:8px 0 8px 10px;padding-left:12px}
+details.region{border-color:var(--g)}
+details.city{border-color:var(--y)}
+details.branch{border-color:var(--r)}
+details.lvl summary{cursor:pointer;font-weight:600}
+details.lvl summary em{font-style:normal;color:var(--muted);font-weight:400;margin-left:8px;font-size:.85rem}
+details.lvl p{margin:6px 0;font-size:.9rem;color:var(--muted)}

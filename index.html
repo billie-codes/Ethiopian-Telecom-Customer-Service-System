@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ethiopian Telecom Customer Service System</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="flag"></div>
+<header>
+  <h1>Ethiopian Telecom Customer Service System</h1>
+  <p class="sub">A C++17 console program that simulates customer data and service usage from branch level up to the national level, using arrays, functions, recursion and control statements.</p>
+  <div class="btns">
+    <a class="btn" href="ethiopian_telecom.cpp" download>Download source (.cpp)</a>
+    <a class="btn alt" href="#app">Try it online</a>
+    <a class="btn alt" href="#run">How to run</a>
+  </div>
+</header>
+<main>
+
+<h2>Hierarchy</h2>
+<div class="card tree">
+  <span class="node">Country</span><span class="arrow">→</span>
+  <span class="node">Region</span><span class="arrow">→</span>
+  <span class="node">City</span><span class="arrow">→</span>
+  <span class="node">Branch</span><span class="arrow">→</span>
+  <span class="node">Customer</span>
+</div>
+
+<h2 id="app">Try it in your browser</h2>
+<div class="card">
+  <form id="entry-form" novalidate>
+    <div class="form-grid">
+      <label>Region<input id="region" type="text" placeholder="Oromia"></label>
+      <label>City<input id="city" type="text" placeholder="Adama"></label>
+      <label>Branch<input id="branch" type="text" placeholder="Adama Branch 1"></label>
+      <label>Customer name / ID<input id="cid" type="text" placeholder="Abe"></label>
+      <label>Mobile balance (ETB)<input id="balance" type="number" min="0" step="any"></label>
+      <label>Data usage (GB)<input id="data" type="number" min="0" step="any"></label>
+      <label>Call minutes<input id="calls" type="number" min="0" step="any"></label>
+      <label>SMS count<input id="sms" type="number" min="0" step="1"></label>
+    </div>
+    <div class="btns">
+      <button class="btn" type="submit">Add customer</button>
+      <button class="btn alt" type="button" id="btn-report">Generate report</button>
+      <button class="btn alt" type="button" id="btn-sample">Load sample data</button>
+      <button class="btn alt" type="button" id="btn-reset">Reset</button>
+    </div>
+    <p id="msg" class="msg" role="status"></p>
+    <p id="status" class="muted"></p>
+  </form>
+  <div id="report"></div>
+</div>
+
+<h2>Features</h2>
+<div class="grid">
+  <div class="card"><h3>Interactive data entry</h3><ul>
+    <li>Regions, cities, branches, customers</li>
+    <li>Name/ID, balance, data, calls, SMS</li></ul></div>
+  <div class="card"><h3>Recursive totals</h3><ul>
+    <li>Customers per branch, city, region, nation</li>
+    <li>Total data, call and SMS usage</li></ul></div>
+  <div class="card"><h3>Top performers</h3><ul>
+    <li>Region with most customers</li>
+    <li>Highest-usage city per region</li>
+    <li>Largest branch per city</li>
+    <li>Highest balance per branch</li></ul></div>
+  <div class="card"><h3>Statistics</h3><ul>
+    <li>Average balance, data and calls per customer</li>
+    <li>Total branches nationwide</li></ul></div>
+  <div class="card"><h3>Hierarchical report</h3><ul>
+    <li>Customer and usage distribution</li>
+    <li>Branch, regional and national summaries</li></ul></div>
+  <div class="card"><h3>Input validation</h3><ul>
+    <li>No negative values</li>
+    <li>Numeric-only input, re-prompts on error</li>
+    <li>Division-by-zero guards</li></ul></div>
+</div>
+
+<h2>Requirement mapping</h2>
+<div class="card scroll">
+<table>
+<tr><th>Requirement</th><th>Functions</th></tr>
+<tr><td>Recursive customer counts</td><td><code>countCustomersInCity</code>, <code>countCustomersInRegion</code>, <code>countCustomersNationwide</code></td></tr>
+<tr><td>Recursive usage totals</td><td><code>cityUsage</code>, <code>regionUsage</code>, <code>nationUsage</code></td></tr>
+<tr><td>Top region / city / branch / customer</td><td><code>topRegionIdx</code>, <code>topCityIdxInRegion</code>, <code>topBranchIdxInCity</code>, <code>topCustomerByBalance</code></td></tr>
+<tr><td>Validation</td><td><code>readPositiveInt</code>, <code>readNonNegDouble</code>, <code>readNonNegInt</code>, <code>readString</code></td></tr>
+<tr><td>Report</td><td><code>generateReport</code> → <code>printRegionReport</code> → <code>printCityReport</code> → <code>printBranchReport</code></td></tr>
+</table>
+</div>
+
+<h2 id="run">How to run</h2>
+<pre>g++ -std=c++17 -Wall -o telecom ethiopian_telecom.cpp
+./telecom        # on Windows: telecom.exe</pre>
+
+<h2>Sample report excerpt</h2>
+<pre>NATIONAL STATISTICS
+  Total Regions         : 2
+  Total Branches        : 2
+  Total Customers       : 3
+  Total Data Usage (GB) : 23.500
+  Total Call Usage (min): 270.0
+  Total SMS             : 60
+  Top Region (customers): Oromia (2 customers)
+
+NATIONAL AVERAGES (per customer)
+  Avg Mobile Balance: 350.00 ETB
+  Avg Data Usage    : 7.833 GB
+  Avg Call Usage    : 90.0 minutes</pre>
+
+</main>
+<footer>Keep <code>index.html</code>, <code>style.css</code>, <code>script.js</code> and <code>ethiopian_telecom.cpp</code> in the same folder.</footer>
+<script src="script.js"></script>
+</body>
+</html>
